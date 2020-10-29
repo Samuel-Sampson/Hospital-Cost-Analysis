@@ -10,3 +10,4 @@ This is part of the Simplilearn Master's Program
 This repository includes:
 1) A pdf writeup of the analysis
 2) The source code in R
+3) The HospitalCosts csv file
