@@ -1,0 +1,37 @@
+#Read in and explore Dataset
+hosp <- read.csv("HospitalCosts.csv")
+View(hosp)
+summary(hosp)
+str(hosp)
+#Attach the dataframe so it is automatically searched when declaring a variable
+attach(hosp)
+
+#Plot Age distribution
+hist(AGE, xlab = "Age (years)")
+summary(as.factor(AGE))
+
+#Find the diagnosis group that has the maximum hospitalization
+summary(as.factor(APRDRG))
+
+#Convert categorical variables from int type to Factors
+hosp$FEMALE <- factor(FEMALE)
+hosp$RACE <- factor(RACE)
+hosp$APRDRG <- factor(APRDRG)
+str(hosp)
+
+#Linear regression model to see the effect of race on total cost
+cost <- lm(TOTCHG ~ RACE, data = hosp)
+summary(cost)
+
+#Compute the analysis of variance with hospital costs by age and gender
+res.aov <- aov(TOTCHG ~ AGE + FEMALE, data=hosp)
+summary(res.aov)
+
+#Compute the analysis of variance with length of stay by age, race, and gender
+res2.aov <- aov(LOS ~ AGE + FEMALE + RACE, data=hosp)
+summary(res2.aov)
+
+#Run a regression to see what variable has the greatest effect on Total Charge
+totcost <-lm(formula = TOTCHG ~ ., data=hosp)
+totcost
+summary(totcost)
