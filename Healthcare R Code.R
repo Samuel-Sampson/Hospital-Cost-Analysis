@@ -1,6 +1,3 @@
-setwd("/Users/samuelsampson/Desktop/Slimplilearn/Project/Projects for Submission/Healthcare/Healthcare")
-getwd()
-
 #Install packages
 install.packages("arules")
 library(arules)
@@ -33,9 +30,6 @@ summary(totcost)
 #Run a regression to see how significant are age, gender, and race on length of stay
 staylength <- lm(formula = LOS ~ AGE + RACE + FEMALE, data=hosp)
 summary(staylength)
-
-#Exponential model
-#mod <- nls(formula = TOTCHG ~ RACE, data=hosp, start = c(a=0,b=0))
 
 #General linear model
 mylogit <- glm(TOTCHG ~ RACE, data = hosp)
